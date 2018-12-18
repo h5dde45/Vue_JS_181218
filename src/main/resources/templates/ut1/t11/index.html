@@ -6,9 +6,10 @@
 </head>
 <body>
 <div id="app">
-    <h2>{{title}} = {{counter}}</h2>
-    <button @click="add(5, 'The counter is increased by 5', $event)">Add 5</button>
-    <button @click="add(10, 'The counter is increased by 10', $event)">Add 10</button>
+
+    <input type="text" v-model.lazy="inputValue">
+    <h2>{{inputValue}}</h2>
+
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
