@@ -1,0 +1,20 @@
+body{
+    background: darkgray;
+}
+.circle{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px solid black;
+    display: inline-block;
+    margin: 40px;
+}
+.red{
+    background: red;
+}
+.blue{
+    background: blue;
+}
+.green{
+    background: green;
+}

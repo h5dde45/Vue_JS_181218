@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+    <div class="circle"
+         :style="circleClasses"></div>
+    <div class="circle"
+         :style="[circleClasses, {  'width': height+'px',
+                'border-radius': height/10 + '%'}]" ></div>
+    <hr>
+    <input type="text" v-model="color">
+    <input type="text" v-model="height">
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
