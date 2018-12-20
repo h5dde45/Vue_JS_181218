@@ -1,20 +1,36 @@
 <template>
   <div>
-    <h1>asd - {{msg}}</h1>
-    <app-car></app-car>
+    <h1>parent: {{carName}}</h1>
+    <app-counter :counter="counter"></app-counter>
+    <app-car
+      :carName="carName"
+      :carYear="carYear"
+      :counter="counter"
+      :changeNameToAuto="changeNameToAuto"
+      @namedChanged="carName=$event"
+      @counterUpdated="counter=$event"></app-car>
   </div>
 </template>
 
 <script>
   import Car from './Car.vue'
+  import Counter from './Counter.vue'
   export default {
     data () {
       return {
-        msg: 'zxc'
+        carName: 'asd',
+        carYear: 123,
+        counter: 0
       }
     },
-    components:{
-        appCar: Car
+    components: {
+      appCar: Car,
+      appCounter: Counter,
+    },
+    methods: {
+      changeNameToAuto(){
+        this.carName = "aaaa"
+      }
     }
   }
 </script>
