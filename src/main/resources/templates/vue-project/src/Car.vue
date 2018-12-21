@@ -1,42 +1,21 @@
 <template>
-  <div class="car">
-    <h3>Name: {{carName}} -> {{reversName}}</h3>
-    <p>Year: {{carYear}}</p>
-    <button @click="changeName">change name</button>
-    <button @click="changeNameToAuto">change name from parent</button>
-    <button @click="updateCounter">update counter</button>
+  <div>
+    <slot name="title"></slot>
+    <hr>
+    <h2>ddssf</h2>
+    <hr>
+    <slot name="text"></slot>
   </div>
 </template>
 <script>
   export default{
-    props: {
-      carName: {
-        type: String,
-        required: false,
-        default: 'zxc'
-      },
-      carYear: Number,
-      changeNameToAuto: Function,
-      counter: Number
-    },
-    computed: {
-      reversName(){
-        return this.carName.split('').reverse().join('')
-      }
-    },
-    methods: {
-      changeName(){
-        this.carName = 'vaz'
-        this.$emit('namedChanged', this.carName)
-      },
-      updateCounter(){
-        this.$emit('counterUpdated', this.counter + 1)
-      }
-    }
   }
 </script>
-<style>
-  .car {
-    background: navajowhite;
+<style scoped>
+  div{
+    border: 1px solid black;
+  }
+  h2{
+    color: blue;
   }
 </style>

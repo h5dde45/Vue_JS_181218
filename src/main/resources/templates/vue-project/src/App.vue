@@ -1,35 +1,34 @@
 <template>
   <div>
-    <h1>parent: {{carName}}</h1>
-    <app-counter :counter="counter"></app-counter>
-    <app-car
-      :carName="carName"
-      :carYear="carYear"
-      :counter="counter"
-      :changeNameToAuto="changeNameToAuto"
-      @namedChanged="carName=$event"
-      @counterUpdated="counter=$event"></app-car>
+    <h2>{{title}}</h2>
+    <input type="text" v-model="searchName">
+    <ul>
+      <li v-for="name of names">{{name}}</li>
+      <hr>
+      <li v-for="name of filteredNames">{{name}}</li>
+    </ul>
   </div>
 </template>
 
 <script>
-  import Car from './Car.vue'
-  import Counter from './Counter.vue'
   export default {
-    data () {
+    data(){
       return {
-        carName: 'asd',
-        carYear: 123,
-        counter: 0
+        title: "fDff",
+        names: ['fdgh', 'eryhe', 'eryyhger','ertghertgw'],
+        searchName: ''
       }
     },
-    components: {
-      appCar: Car,
-      appCounter: Counter,
+    filters: {
+      lowercase(value){
+        return value.toLowerCase()
+      }
     },
-    methods: {
-      changeNameToAuto(){
-        this.carName = "aaaa"
+    computed:{
+      filteredNames(){
+          return this.names.filter(name =>{
+              return name.indexOf(this.searchName) !== -1
+          })
       }
     }
   }
@@ -39,4 +38,5 @@
   body {
     background: darkgrey;
   }
+
 </style>
