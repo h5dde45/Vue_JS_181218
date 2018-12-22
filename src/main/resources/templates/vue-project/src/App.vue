@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <h2>{{title}}</h2>
-    <input type="text" v-model="searchName">
-    <ul>
-      <li v-for="name of names">{{name}}</li>
-      <hr>
-      <li v-for="name of filteredNames">{{name}}</li>
-    </ul>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="collapse navbar-collapse">
+        <div class="navbar-nav">
+          <router-link class="nav-item nav-link" to="/">Home</router-link>
+          <router-link class="nav-item nav-link" to="/cars">Cars</router-link>
+        </div>
+      </div>
+    </nav>
+  <router-view></router-view>
   </div>
 </template>
 
@@ -14,29 +16,18 @@
   export default {
     data(){
       return {
-        title: "fDff",
-        names: ['fdgh', 'eryhe', 'eryyhger','ertghertgw'],
-        searchName: ''
-      }
-    },
-    filters: {
-      lowercase(value){
-        return value.toLowerCase()
-      }
-    },
-    computed:{
-      filteredNames(){
-          return this.names.filter(name =>{
-              return name.indexOf(this.searchName) !== -1
-          })
+        name: '1',
       }
     }
   }
 </script>
 
-<style>
+<style scoped>
   body {
     background: darkgrey;
   }
 
+  .container {
+    font-size: 36px;
+  }
 </style>
