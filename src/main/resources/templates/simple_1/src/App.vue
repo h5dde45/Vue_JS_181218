@@ -1,20 +1,35 @@
 <template>
   <div>
     <app-header></app-header>
-    <new-greetings></new-greetings>
-    <hr>
-    <new-greetings></new-greetings>
+    <div class="container">
+      <div class="row">
+        <app-productList @viewDetails="viewDetails"></app-productList>
+        <product-details :product="selectedProduct"></product-details>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import Greetings from "./Greetings.vue";
   import Header from "./Header.vue";
+  import ProductList from "./ProductList.vue";
+  import ProductDetails from "./ProductDetails.vue";
 
   export default {
+    data(){
+      return {
+        selectedProduct: {}
+      }
+    },
     components: {
-      newGreetings: Greetings,
-      appHeader: Header
+      appHeader: Header,
+      appProductList: ProductList,
+      ProductDetails
+    },
+    methods: {
+      viewDetails(productToView){
+        this.selectedProduct = productToView
+      }
     }
   }
 </script>
