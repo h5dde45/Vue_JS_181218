@@ -8,17 +8,21 @@
   </div>
 </template>
 <script>
+  import ProductService from './productService'
+
   export default{
     props: {
-      'product': Object,
-      'index': Number
+      product: Object,
+      index: Number
     },
     data(){
       return {}
     },
-    methods:{
+    methods: {
       viewDetailsClicked(){
-          this.$emit("viewDetails", this.product.id)
+//        this.$emit("viewDetails", this.product.id)
+//        this.viewDetails(this.product.id)
+        ProductService.viewDetailsList(this.product.id)
       }
     }
   }

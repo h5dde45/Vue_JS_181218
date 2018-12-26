@@ -11,9 +11,17 @@
   </div>
 </template>
 <script>
-  export default{
-    props: ['product'],
+  import ProductService from './productService'
 
+  export default{
+    data(){
+      return {
+        product: {}
+      }
+    },
+    created(){
+      ProductService.$on('viewDetails', selectedProduct => this.product = selectedProduct)
+    }
   }
 </script>
 <style>

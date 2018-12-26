@@ -3,8 +3,8 @@
     <app-header></app-header>
     <div class="container">
       <div class="row">
-        <app-productList @viewDetails="viewDetails"></app-productList>
-        <product-details :product="selectedProduct"></product-details>
+        <app-productList></app-productList>
+        <product-details></product-details>
       </div>
     </div>
   </div>
@@ -16,20 +16,10 @@
   import ProductDetails from "./ProductDetails.vue";
 
   export default {
-    data(){
-      return {
-        selectedProduct: {}
-      }
-    },
     components: {
       appHeader: Header,
       appProductList: ProductList,
       ProductDetails
-    },
-    methods: {
-      viewDetails(productToView){
-        this.selectedProduct = productToView
-      }
     }
   }
 </script>

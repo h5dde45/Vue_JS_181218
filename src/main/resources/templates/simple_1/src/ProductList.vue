@@ -3,47 +3,24 @@
     <product-item v-for="(product,i) in products"
                   :key="product.id"
                   :product="product"
-                  :index="i+1"
-                  @viewDetails="viewDetailsList"></product-item>
+                  :index="i+1"></product-item>
   </div>
 </template>
 <script>
   import ProductItem from './ProductItem.vue'
-  import _ from 'lodash'
+  import ProductService from './productService'
 
   export default{
-    data(){
+    data() {
       return {
-        products: [
-          {
-            id: 1,
-            title: 'p1',
-            price: 11,
-            qt: 111
-          },
-          {
-            id: 2,
-            title: 'p2',
-            price: 22,
-            qt: 222
-          },
-          {
-            id: 3,
-            title: 'p3',
-            price: 33,
-            qt: 333
-          },
-        ]
+        products: []
       }
     },
     components: {
       ProductItem
     },
-    methods: {
-      viewDetailsList(id){
-        var productToView = _.find(this.products, {id: id});
-        this.$emit("viewDetails", productToView)
-      }
+    created(){
+      this.products = ProductService.products
     }
   }
 </script>
