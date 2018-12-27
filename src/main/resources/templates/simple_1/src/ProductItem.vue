@@ -22,7 +22,10 @@
       viewDetailsClicked(){
 //        this.$emit("viewDetails", this.product.id)
 //        this.viewDetails(this.product.id)
-        ProductService.viewDetailsList(this.product.id)
+//        ProductService.viewDetailsList(this.product.id)
+//        this.$router.push('/detail/' + this.product.id)
+        this.$router.push({name: 'product-details', params: {id: this.product.id}})
+
       }
     }
   }

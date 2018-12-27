@@ -1,10 +1,11 @@
 <template>
   <div>
-    <app-header></app-header>
+    <app-header>
+      <h2 class="my-3">Home page</h2>
+    </app-header>
     <div class="container">
       <div class="row">
-        <app-productList></app-productList>
-        <product-details></product-details>
+        <router-view></router-view>
       </div>
     </div>
   </div>
@@ -12,14 +13,10 @@
 
 <script>
   import Header from "./Header.vue";
-  import ProductList from "./ProductList.vue";
-  import ProductDetails from "./ProductDetails.vue";
 
   export default {
     components: {
-      appHeader: Header,
-      appProductList: ProductList,
-      ProductDetails
+      appHeader: Header
     }
   }
 </script>

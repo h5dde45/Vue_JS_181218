@@ -1,5 +1,6 @@
 <template>
-  <div class="col-sm-6">
+  <div class="col-sm-4">
+    <router-link to="/add?text=hi" class="btn btn-info m-1">Add product</router-link>
     <product-item v-for="(product,i) in products"
                   :key="product.id"
                   :product="product"

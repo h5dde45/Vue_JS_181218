@@ -26,8 +26,17 @@ export default new Vue({
   },
   methods: {
     viewDetailsList(id){
-      let productToView = _.find(this.products, {id: id});
+      let productToView = _.find(this.products, {id: parseInt(id)});
       this.$emit("viewDetails", productToView)
+    },
+    addProduct(title, price, qt){
+      let id = this.products.length + 1;
+      this.products.push({
+        id,
+        title,
+        price,
+        qt
+      })
     }
   }
 })
