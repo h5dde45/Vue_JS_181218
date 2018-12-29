@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <form class="pt-3">
+    <form class="pt-3" @submit.prevent="onSubmit">
       <div class="form-group">
         <label for="email">Email</label>
         <input type="email" id="email"
@@ -10,6 +10,7 @@
                v-model="email">
         <div class="invalid-feedback" v-if="!$v.email.required">Email field is required</div>
         <div class="invalid-feedback" v-if="!$v.email.email">Email incorrect</div>
+        <div class="invalid-feedback" v-if="!$v.email.uniqEmail">This email already exists</div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -33,7 +34,9 @@
           Different passwords
         </div>
       </div>
-
+      <button class="btn btn-info" type="submit"
+              :disabled="$v.$invalid">Ok
+      </button>
     </form>
   </div>
 </template>
@@ -45,13 +48,27 @@
       return {
         email: '',
         password: '',
-        confirmPassword:''
+        confirmPassword: ''
+      }
+    },
+    methods: {
+      onSubmit(){
+        alert("Email " + this.email + ', Password ' + this.password)
       }
     },
     validations: {
       email: {
         required: required,
-        email: email
+        email: email,
+        uniqEmail: function (newEmail) {
+          if (email === '') return true
+          return new Promise((resolve, reject) => {
+            setTimeout(() => {
+              const value = newEmail !== 'asd@mail.ru'
+              resolve(value)
+            }, 1333)
+          })
+        }
       },
       password: {
         minLength: minLength(6)
