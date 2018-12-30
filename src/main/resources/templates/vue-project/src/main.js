@@ -1,12 +1,11 @@
 import Vue from "vue";
-import VueRouter from "vue-router";
-import App from "./App.vue";
-import routes from "./routes";
+import VueResource from "vue-resource";
+import App2 from "./App2.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueResource)
+Vue.http.options.root='http://localhost:3000/'
 
 new Vue({
-  routes,
   el: '#app',
-  render: h => h(App),
+  render: h => h(App2),
 })
