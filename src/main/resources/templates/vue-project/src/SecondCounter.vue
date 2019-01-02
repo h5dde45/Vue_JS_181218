@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Counter: {{counter}}</h1>
+    <h1>Second Counter: {{counter}}</h1>
   </div>
 </template>
 <script>
