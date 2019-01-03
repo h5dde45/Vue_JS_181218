@@ -4,11 +4,10 @@
                              class="hidden-md-and-up">
             <v-list>
                 <v-list-tile v-for="(item,i) in menuItems"
-                             :key="'navdrawer${i}'"
-                             :to="item.route">
-                    <v-list-tile-icon>
+                             :key="`navdrawer${i}`">
+                    <v-list-tile-action>
                         <v-icon v-html="item.icon"></v-icon>
-                    </v-list-tile-icon>
+                    </v-list-tile-action>
                     <v-list-tile-content>
                         <v-list-tile-title v-text="item.title"></v-list-tile-title>
                     </v-list-tile-content>
@@ -19,12 +18,12 @@
             <v-toolbar-side-icon @click.stop="drawer=!drawer"
                                  class="hidden-md-and-up"></v-toolbar-side-icon>
             <router-link to="/" tag="span" style="cursor: pointer">
-                <v-toolbar-title v-text="'Learning German'"></v-toolbar-title>
+                <v-toolbar-title v-text="'Немецкий язык'"></v-toolbar-title>
             </router-link>
             <v-spacer></v-spacer>
             <v-toolbar-items class="hidden-sm-and-down">
                 <v-btn v-for="(item,i) in menuItems" flat
-                       :key="'menuitem${i}'"
+                       :key="`menuitem${i}`"
                        :to="item.route">
                     <v-icon left v-html="item.icon"></v-icon>
                     {{item.title}}
