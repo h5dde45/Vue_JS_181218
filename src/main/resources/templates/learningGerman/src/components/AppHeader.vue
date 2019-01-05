@@ -28,6 +28,10 @@
                     <v-icon left v-html="item.icon"></v-icon>
                     {{item.title}}
                 </v-btn>
+                <v-btn flat @click.prevent="signout" v-if="isUserAuthenticated">
+                    <v-icon left>directions_run</v-icon>
+                    Выйти
+                </v-btn>
             </v-toolbar-items>
         </v-toolbar>
     </div>
@@ -40,39 +44,53 @@
             }
         },
         computed: {
+            isUserAuthenticated(){
+                return this.$store.getters.isUserAuthenticated
+            },
             menuItems(){
-                return [
-                    {
-                        icon: 'visibility',
-                        title: 'Читать',
-                        route: '/books',
-                    },
-                    {
-                        icon: 'extension',
-                        title: 'Учить слова',
-                        route: '/words',
-                    },
-                    {
-                        icon: 'account_box',
-                        title: 'Кабинет',
-                        route: '/profile',
-                    },
-                    {
-                        icon: 'directions_run',
-                        title: 'Выйти',
-                        route: '/logout',
-                    },
-                    {
-                        icon: 'input',
-                        title: 'Войти',
-                        route: '/signin',
-                    },
-                    {
-                        icon: 'lock_open',
-                        title: 'Зарегистрироваться',
-                        route: '/signup',
-                    },
-                ]
+                return this.isUserAuthenticated ?
+                    [
+                        {
+                            icon: 'visibility',
+                            title: 'Читать',
+                            route: '/books',
+                        },
+                        {
+                            icon: 'extension',
+                            title: 'Учить слова',
+                            route: '/words',
+                        },
+                        {
+                            icon: 'account_box',
+                            title: 'Кабинет',
+                            route: '/profile',
+                        },
+                    ] :
+                    [
+                        {
+                            icon: 'visibility',
+                            title: 'Читать',
+                            route: '/books',
+                        },
+                        {
+                            icon: 'input',
+                            title: 'Войти',
+                            route: '/signin',
+                        },
+                        {
+                            icon: 'lock_open',
+                            title: 'Зарегистрироваться',
+                            route: '/signup',
+                        },
+                    ]
+            }
+        },
+        methods: {
+            signout(){
+                this.$confirm('Выйти?').then(res => {
+                    if(res)
+                        this.$store.dispatch('signout')
+                })
             }
         }
     }
