@@ -1,15 +1,8 @@
 <template>
-<div>
-    <books-list></books-list>
-</div>
+    <div>
+        <h2>books</h2>
+    </div>
 </template>
 <script>
-    import BooksList from '../components/BooksList.vue'
-    export default{
-        components:{
-            BooksList
-        }
-    }
+    export default{}
 </script>
-<style>
-</style>

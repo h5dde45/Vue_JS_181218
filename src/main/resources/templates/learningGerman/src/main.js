@@ -1,24 +1,21 @@
 import Vue from "vue";
 import App from "./App.vue";
+import Vuetify from "vuetify";
 import router from "./router";
 import store from "./store";
-import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
-import VuetifyConfirm from 'vuetify-confirm'
+import FirebaseConfig from "./config/firebase";
 import firebase from "firebase";
-import firebaseConfig from "./config/firebase";
+import VuetifyConfirm from 'vuetify-confirm'
 
 Vue.use(Vuetify)
-
-Vue.config.productionTip = false
+firebase.initializeApp(FirebaseConfig)
 
 Vue.use(VuetifyConfirm, {
     buttonTrueText: 'Да',
     buttonFalseText: 'Нет',
-    width: 300,
+    width: 400,
 })
-
-firebase.initializeApp(firebaseConfig);
 
 new Vue({
     router,
@@ -27,7 +24,7 @@ new Vue({
     created(){
         let vm = this
         firebase.auth().onAuthStateChanged(function (user) {
-                vm.$store.dispatch('state_change',user)
+            vm.$store.dispatch('state_change', user)
         });
     }
 }).$mount('#app')

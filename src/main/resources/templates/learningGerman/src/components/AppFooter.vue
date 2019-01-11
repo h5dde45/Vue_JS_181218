@@ -1,13 +1,10 @@
 <template>
-<div>
-    <v-footer :fixed="true" app>
-        <span>Learning German &copy;2019</span>
-    </v-footer>
-</div>
+    <div>
+        <v-footer :fixed="true" app >
+            <span>__Footer &copy2019</span>
+        </v-footer>
+    </div>
 </template>
 <script>
-    export default{
-    }
+    export default{}
 </script>
-<style>
-</style>

@@ -14,11 +14,11 @@
                 </v-list-tile>
             </v-list>
         </v-navigation-drawer>
-        <v-toolbar app dark class="success">
+        <v-toolbar app dark class="green">
             <v-toolbar-side-icon @click.stop="drawer=!drawer"
                                  class="hidden-md-and-up"></v-toolbar-side-icon>
             <router-link to="/" tag="span" style="cursor: pointer">
-                <v-toolbar-title v-text="'Немецкий язык'"></v-toolbar-title>
+                <v-toolbar-title v-text="'Learning German'"></v-toolbar-title>
             </router-link>
             <v-spacer></v-spacer>
             <v-toolbar-items class="hidden-sm-and-down">
@@ -56,15 +56,10 @@
                             route: '/books',
                         },
                         {
-                            icon: 'extension',
-                            title: 'Учить слова',
-                            route: '/words',
-                        },
-                        {
                             icon: 'account_box',
                             title: 'Кабинет',
                             route: '/profile',
-                        },
+                        }
                     ] :
                     [
                         {
@@ -81,19 +76,18 @@
                             icon: 'lock_open',
                             title: 'Зарегистрироваться',
                             route: '/signup',
-                        },
+                        }
                     ]
             }
         },
         methods: {
             signout(){
-                this.$confirm('Выйти?').then(res => {
-                    if(res)
+                this.$confirm('Выход..').then(res => {
+                    if(res) {
                         this.$store.dispatch('signout')
+                    }
                 })
             }
         }
     }
 </script>
-<style>
-</style>

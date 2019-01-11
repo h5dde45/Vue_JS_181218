@@ -1,11 +1,8 @@
 <template>
-<div>
-    <h1>words</h1>
-</div>
+   <h2>words</h2>
 </template>
 <script>
     export default{
+       
     }
 </script>
-<style>
-</style>

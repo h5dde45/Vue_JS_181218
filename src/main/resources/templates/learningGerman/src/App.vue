@@ -1,5 +1,5 @@
 <template>
-    <v-app >
+    <v-app class="grey">
         <app-header></app-header>
         <v-content>
             <router-view/>
@@ -8,12 +8,12 @@
     </v-app>
 </template>
 <script>
-    import appHeader from "./components/AppHeader.vue"
-    import appFooter from "./components/AppFooter.vue"
+    import AppHeader from './components/AppHeader.vue'
+    import AppFooter from './components/AppFooter.vue'
     export default{
         components: {
-            appHeader,
-            appFooter
+            AppHeader,
+            AppFooter
         }
     }
 </script>
