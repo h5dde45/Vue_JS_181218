@@ -1,5 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
+import Book from "./views/Book.vue";
+import BookPart from "./views/BookPart.vue";
 import Books from "./views/Books.vue";
 import Signin from "./views/Signin.vue";
 import Signup from "./views/Signup.vue";
@@ -15,6 +17,18 @@ export default new Router({
             path: '/books',
             name: 'books',
             component: Books
+        },
+        {
+            path: '/book/:id',
+            name: 'book',
+            props: true,
+            component: Book
+        },
+        {
+            path: '/book/:bookId/part/:partId',
+            name: 'bookPart',
+            props: true,
+            component: BookPart
         },
         {
             path: '/words',
