@@ -7,8 +7,10 @@ import "vuetify/dist/vuetify.min.css";
 import FirebaseConfig from "./config/firebase";
 import firebase from "firebase";
 import VuetifyConfirm from 'vuetify-confirm'
+import VueYouTubeEmbed from 'vue-youtube-embed'
 
 Vue.use(Vuetify)
+Vue.use(VueYouTubeEmbed)
 firebase.initializeApp(FirebaseConfig)
 
 Vue.use(VuetifyConfirm, {

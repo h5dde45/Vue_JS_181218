@@ -4,9 +4,9 @@
             <!--md-->
             <v-layout row class="hidden-sm-and-down">
                 <v-flex xs4 md3>
-                    <v-card-media height="150px"
+                    <v-img height="150px"
                                   src="https://wallbox.ru/resize/1920x1200/wallpapers/main/201125/2389b8b51fab468dbe17cc5d7e306eeb.jpg">
-                    </v-card-media>
+                    </v-img>
                     <div class="text-xs-center mt-2">
                         <v-btn flat color="white">
                             <v-icon left>visibility</v-icon>
@@ -39,9 +39,9 @@
             <div class="hidden-md-and-up">
                 <v-layout row>
                     <v-flex xs4 md3>
-                        <v-card-media height="100px"
+                        <v-img height="100px"
                                       src="https://wallbox.ru/resize/1920x1200/wallpapers/main/201125/2389b8b51fab468dbe17cc5d7e306eeb.jpg">
-                        </v-card-media>
+                        </v-img>
                     </v-flex>
                     <v-flex xs8 md9>
                         <v-card-title>

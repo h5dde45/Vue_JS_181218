@@ -104,37 +104,37 @@ export default({
                 bookPartId: 'partId1',
                 bookTitle: 'Part I. Book 1',
                 partTile: 'Kap1',
-                youtube_id: 'youtube_id1',
+                youtube_id: 'UchTK-I9Mo4',
                 content: [
                     {
                         sentences: [
                             {
-                                origText: 'Once in the cold winter',
-                                transText: 'Однажды в студеную зимнюю пору'
+                                origText: ' Once in the cold winter.',
+                                transText: ' Однажды в студеную зимнюю пору.'
                             },
                             {
-                                origText: 'The wolf ran to an izba and cried by a thick voice',
-                                transText: 'Волк побежал к избушке и закричал толстым голосом'
+                                origText: ' The wolf ran to an izba and cried by a thick voice.',
+                                transText: ' Волк побежал к избушке и закричал толстым голосом.'
                             },
                             {
-                                origText: 'Dogs are angry, shepherd is awake',
-                                transText: 'Собаки злы, пастух не спит'
+                                origText: ' Dogs are angry, shepherd is awake.',
+                                transText: ' Собаки злы, пастух не спит.'
                             },
                         ]
                     },
                     {
                         sentences: [
                             {
-                                origText: 'Once in the cold winter2',
-                                transText: 'Однажды в студеную зимнюю пору2'
+                                origText: ' Once in the cold winter2.',
+                                transText: ' Однажды в студеную зимнюю пору2.'
                             },
                             {
-                                origText: 'The wolf ran to an izba and cried by a thick voice2',
-                                transText: 'Волк побежал к избушке и закричал толстым голосом2'
+                                origText: ' The wolf ran to an izba and cried by a thick voice2.',
+                                transText: ' Волк побежал к избушке и закричал толстым голосом2.'
                             },
                             {
-                                origText: 'Dogs are angry, shepherd is awake2',
-                                transText: 'Собаки злы, пастух не спит2'
+                                origText: ' Dogs are angry, shepherd is awake2.',
+                                transText: ' Собаки злы, пастух не спит2.'
                             },
                         ]
                     },
@@ -155,6 +155,18 @@ export default({
                     {
                         origWord:'Hello4',
                         transWord: 'Привет4'
+                    },
+                    {
+                        origWord:'Hello5',
+                        transWord: 'Привет5'
+                    },
+                    {
+                        origWord:'Hello6',
+                        transWord: 'Привет6'
+                    },
+                    {
+                        origWord:'Hello7',
+                        transWord: 'Привет7'
                     }
                 ]
             }

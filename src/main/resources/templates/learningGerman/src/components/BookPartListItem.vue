@@ -5,7 +5,7 @@
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn flat class="yellow"
-                       :to="{name:'bookPart', params:{bookId:bookId, partId:part.bookPartId}}">Открыть
+                       :to="{name:'bookPart', params:{bookId:bookId, partId:part.id}}">Открыть
                 </v-btn>
             </v-card-actions>
         </v-card>
