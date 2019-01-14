@@ -7,7 +7,7 @@
                 <v-divider class="black"></v-divider>
             </div>
             <div class="text-xs-center mt-2 mb-2 success">
-                <youtube :video-id="part.youtube_id"
+                <youtube :video-id="part.youtubeId"
                          :player-width="playerWidth"></youtube>
             </div>
             <div class="mt-2">

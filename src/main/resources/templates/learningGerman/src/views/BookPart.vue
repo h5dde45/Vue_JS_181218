@@ -11,9 +11,15 @@
     </v-container>
 </template>
 <script>
+    import Vue from 'vue'
     import BookPartContent from '../components/BookPartContent.vue'
     import BookPartWords from '../components/BookPartWords.vue'
     export default{
+        data() {
+            return {
+                part: null
+            }
+        },
         props: {
             'bookId': {
                 type: String,
@@ -24,13 +30,28 @@
                 required: true
             },
         },
-        computed: {
-            part(){
-                let val = this.$store.getters.getParts.find(b => b.bookId == this.bookId
-                && b.bookPartId == this.partId)
-                return val
-            }
+        created(){
+            Vue.$db.collection('bookParts')
+                .where('bookId', '==', this.bookId)
+                .where('bookPartId', '==', this.partId)
+                .get()
+                .then(querySnapshot => {
+                        querySnapshot.forEach(s => {
+                            this.part = s.data()
+                        })
+                    }
+                )
+                .catch(error => console.log(error))
+
         },
+        computed: {
+//            part(){
+//                let val = this.$store.getters.getParts.find(b => b.bookId == this.bookId
+//                && b.bookPartId == this.partId)
+//                return val
+//            }
+        }
+        ,
         components: {
             BookPartContent,
             BookPartWords

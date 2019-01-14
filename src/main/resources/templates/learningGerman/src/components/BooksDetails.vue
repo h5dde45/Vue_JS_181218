@@ -5,7 +5,7 @@
             <v-layout row class="hidden-sm-and-down">
                 <v-flex xs4 md3>
                     <v-img height="150px"
-                                  src="https://wallbox.ru/resize/1920x1200/wallpapers/main/201125/2389b8b51fab468dbe17cc5d7e306eeb.jpg">
+                           :src="book.imageUrl">
                     </v-img>
                     <div class="text-xs-center mt-2">
                         <v-btn flat color="white">
@@ -24,12 +24,12 @@
                         </div>
                     </v-card-title>
                     <v-card-actions>
-                        <v-rating v-model="book.rating" color="orange"
-                                  readonly dense half-increments></v-rating>
-                        <div class="ml-1">
-                            <span>{{book.rating}}</span>
-                            <span>({{book.ratingsCount}})</span>
-                        </div>
+                        <!--<v-rating v-model="book.rating" color="orange"-->
+                                  <!--readonly dense half-increments></v-rating>-->
+                        <!--<div class="ml-1">-->
+                            <!--<span>{{book.rating}}</span>-->
+                            <!--<span>({{book.ratingsCount}})</span>-->
+                        <!--</div>-->
                         <v-spacer></v-spacer>
                         <v-btn class="success" flat>Загрузить</v-btn>
                     </v-card-actions>
@@ -40,7 +40,7 @@
                 <v-layout row>
                     <v-flex xs4 md3>
                         <v-img height="100px"
-                                      src="https://wallbox.ru/resize/1920x1200/wallpapers/main/201125/2389b8b51fab468dbe17cc5d7e306eeb.jpg">
+                               :src="book.imageUrl">
                         </v-img>
                     </v-flex>
                     <v-flex xs8 md9>
@@ -70,12 +70,12 @@
                 <v-layout row>
                     <v-flex xs12>
                         <v-card-actions>
-                            <v-rating v-model="book.rating" color="orange"
-                                      readonly dense half-increments></v-rating>
-                            <div class="ml-1">
-                                <span>{{book.rating}}</span>
-                                <span>({{book.ratingsCount}})</span>
-                            </div>
+                            <!--<v-rating v-model="book.rating" color="orange"-->
+                                      <!--readonly dense half-increments></v-rating>-->
+                            <!--<div class="ml-1">-->
+                                <!--<span>{{book.rating}}</span>-->
+                                <!--<span>({{book.ratingsCount}})</span>-->
+                            <!--</div>-->
                             <v-spacer></v-spacer>
                             <v-btn class="success" flat>Загрузить</v-btn>
                         </v-card-actions>
