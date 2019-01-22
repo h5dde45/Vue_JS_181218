@@ -25,13 +25,14 @@
                     </v-card-title>
                     <v-card-actions>
                         <!--<v-rating v-model="book.rating" color="orange"-->
-                                  <!--readonly dense half-increments></v-rating>-->
+                        <!--readonly dense half-increments></v-rating>-->
                         <!--<div class="ml-1">-->
-                            <!--<span>{{book.rating}}</span>-->
-                            <!--<span>({{book.ratingsCount}})</span>-->
+                        <!--<span>{{book.rating}}</span>-->
+                        <!--<span>({{book.ratingsCount}})</span>-->
                         <!--</div>-->
                         <v-spacer></v-spacer>
-                        <v-btn class="success" flat>Загрузить</v-btn>
+                        <v-btn class="success" flat v-if="canLoadBook(book.id)"
+                                @click="loadBook(book.id)">Загрузить</v-btn>
                     </v-card-actions>
                 </v-flex>
             </v-layout>
@@ -71,13 +72,16 @@
                     <v-flex xs12>
                         <v-card-actions>
                             <!--<v-rating v-model="book.rating" color="orange"-->
-                                      <!--readonly dense half-increments></v-rating>-->
+                            <!--readonly dense half-increments></v-rating>-->
                             <!--<div class="ml-1">-->
-                                <!--<span>{{book.rating}}</span>-->
-                                <!--<span>({{book.ratingsCount}})</span>-->
+                            <!--<span>{{book.rating}}</span>-->
+                            <!--<span>({{book.ratingsCount}})</span>-->
                             <!--</div>-->
                             <v-spacer></v-spacer>
-                            <v-btn class="success" flat>Загрузить</v-btn>
+                            <v-btn class="success" flat
+                                   v-if="canLoadBook(book.id)"
+                                   @click="loadBook(book.id)">Загрузить
+                            </v-btn>
                         </v-card-actions>
                     </v-flex>
                 </v-layout>
@@ -87,6 +91,7 @@
 </template>
 <script>
     import * as bookHelper from '../helpers/book'
+    import {mapGetters} from 'vuex'
     export default{
         props: {
             'book': {
@@ -95,7 +100,20 @@
             }
         },
         methods: {
-            getBookLevel: bookHelper.getBookLevel
+            getBookLevel: bookHelper.getBookLevel,
+            canLoadBook(bookId){
+                var book = this.getUserDataBook(bookId);
+                return this.isAuthenticated && !this.getProcessing && !book
+            },
+            getUserDataBook(bookId){
+                return this.userData.books[bookId]
+            },
+            loadBook(bookId){
+                this.$store.dispatch('add_user_book', bookId)
+            }
+        },
+        computed: {
+            ...mapGetters(['isUserAuthenticated', 'userData', 'getProcessing'])
         }
     }
 </script>
