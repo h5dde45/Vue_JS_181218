@@ -10,19 +10,25 @@
 
 <script>
   import ProductItem from './ProductItem.vue'
-  import  ProductService from './ProductService'
+  import ProductService from './ProductService'
+  import {mapGetters, mapActions} from 'vuex'
 
   export default {
-    data(){
-      return {
-        products: []
-      }
+    computed: {
+      ...mapGetters({
+        products: 'getProducts'
+      }),
     },
     components: {
       ProductItem
     },
+    methods: {
+      ...mapActions(['loadProducts'])
+    },
     created(){
-      this.products = ProductService.products
+//        this.$store.commit('loadProducts', ProductService.products)
+//      this.$store.dispatch('loadProducts', ProductService.products)
+      this.loadProducts(ProductService.products)
     }
   }
 </script>
