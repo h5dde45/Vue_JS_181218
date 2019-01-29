@@ -1,7 +1,8 @@
-import Vue from 'vue'
-import App from './p01/App.vue'
+import Vue from "vue";
+import Vuelidate from 'vuelidate'
+import App from "./p04/App.vue";
 
-export const eventEmitter = new Vue()
+Vue.use(Vuelidate)
 
 new Vue({
   el: '#app',
