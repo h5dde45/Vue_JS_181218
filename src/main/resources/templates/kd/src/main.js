@@ -1,11 +1,13 @@
 import Vue from "vue";
-import Vuelidate from 'vuelidate'
-import App from "./p04/App.vue";
+import VueRouter from "vue-router";
+import App from "./p05/App.vue";
+import router from "./p05/routes";
 
-Vue.use(Vuelidate)
+Vue.use(VueRouter)
 
 new Vue({
   el: '#app',
+  router,
   render: h => h(App)
 })
 
