@@ -1,15 +1,10 @@
 import Vue from "vue";
-import VueResource from "vue-resource";
-import App from "./p06/App.vue";
-
-Vue.use(VueResource)
-Vue.http.options.root = 'http://localhost:3000/'
-Vue.http.interceptors.push(request => {
-  request.headers.set('Auth', 'rand token' + Math.random())
-})
+import App from "./p07/App.vue";
+import store from "./p07/store/index";
 
 new Vue({
   el: '#app',
+  store,
   render: h => h(App)
 })
 
