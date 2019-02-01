@@ -27,6 +27,10 @@
                     <v-icon left v-html="item.icon"></v-icon>
                     {{item.title}}
                 </v-btn>
+                <v-btn flat @click.prevent="signout" v-if="isUserAuthenticated">
+                    <v-icon left>directions_run</v-icon>
+                    Выйти
+                </v-btn>
             </v-toolbar-items>
         </v-toolbar>
     </div>
@@ -54,11 +58,6 @@
                             title: 'Кабинет',
                             route: '/profile',
                         },
-                        {
-                            icon: 'directions_run',
-                            title: 'Выйти',
-                            route: '/logout',
-                        }
                     ] :
                     [
                         {
@@ -77,6 +76,15 @@
                             route: '/signup',
                         },
                     ]
+            }
+        },
+        methods: {
+            signout(){
+                this.$confirm('Выход...').then(res => {
+                    if (res) {
+                        this.$store.dispatch('signout')
+                    }
+                })
             }
         }
     }
