@@ -6,7 +6,7 @@
             </v-card-title>
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn flat class="yellow"
+                <v-btn flat class="yellow" v-if="isUserBookLoader"
                        :to="{name:'bookPart', params:{bookId: bookId, partId:part.id}}">Открыть
                 </v-btn>
             </v-card-actions>
@@ -14,6 +14,7 @@
     </div>
 </template>
 <script>
+    import {mapGetters} from 'vuex'
     export default {
         props: {
             "part": {
@@ -23,8 +24,13 @@
             "bookId": {
                 required: true
             },
-        }
-
+        },
+        computed: {
+            ...mapGetters(['isUserAuthenticated', 'userData', 'getProcessing']),
+            isUserBookLoader(){
+                return this.isUserAuthenticated && !this.getProcessing && !!this.userData.books[this.bookId]
+            }
+        },
     }
 </script>
 <style scoped>

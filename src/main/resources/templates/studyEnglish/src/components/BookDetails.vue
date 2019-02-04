@@ -25,13 +25,19 @@
                     </v-card-title>
                     <v-card-actions>
                         <!--<v-rating v-model="book.rating" color="yellow"-->
-                                  <!--readonly dense half-increments></v-rating>-->
+                        <!--readonly dense half-increments></v-rating>-->
                         <!--<div class="ml-1">-->
-                            <!--<span>{{book.rating}}</span>-->
-                            <!--<span>({{book.ratingsCount}})</span>-->
+                        <!--<span>{{book.rating}}</span>-->
+                        <!--<span>({{book.ratingsCount}})</span>-->
                         <!--</div>-->
                         <v-spacer></v-spacer>
-                        <v-btn class="orange" flat>Загрузить</v-btn>
+                        <v-btn class="orange" flat v-if="cantLoadBook(book.id)"
+                               @click="loadBook(book.id)">Загрузить
+                        </v-btn>
+                        <div v-if="getUserDataBook(book.id)">
+                            <v-icon color="white" class="mr-2">account_balance</v-icon>
+                            Книга добавлена {{getBookAddedDate(book.id)}}
+                        </div>
                     </v-card-actions>
                 </v-flex>
             </v-layout>
@@ -72,10 +78,10 @@
                     <v-flex xs12>
                         <v-card-actions>
                             <!--<v-rating v-model="book.rating" color="yellow"-->
-                                      <!--readonly dense half-increments></v-rating>-->
+                            <!--readonly dense half-increments></v-rating>-->
                             <!--<div class="ml-1">-->
-                                <!--<span>{{book.rating}}</span>-->
-                                <!--<span>({{book.ratingsCount}})</span>-->
+                            <!--<span>{{book.rating}}</span>-->
+                            <!--<span>({{book.ratingsCount}})</span>-->
                             <!--</div>-->
                             <v-spacer></v-spacer>
                             <v-btn class="orange" flat>Загрузить</v-btn>
@@ -88,6 +94,7 @@
 </template>
 <script>
     import {getBookLevel} from '../helpers/book'
+    import {mapGetters} from 'vuex'
     export default{
         props: {
             'book': {
@@ -95,8 +102,28 @@
                 required: true
             }
         },
+        data(){
+            return {}
+        },
+        computed: {
+            ...mapGetters(['isUserAuthenticated', 'userData', 'getProcessing'])
+        },
         methods: {
-            getBookLevel
+            getBookLevel,
+            cantLoadBook(bookId){
+                let book = this.getUserDataBook(bookId);
+                return this.isUserAuthenticated && !this.getProcessing && !book
+            },
+            getUserDataBook(bookId){
+                return this.userData.books[bookId]
+            },
+            loadBook(bookId){
+                this.$store.dispatch('add_user_book', bookId)
+            },
+            getBookAddedDate(bookId){
+                let book = this.getUserDataBook(bookId);
+                return book.addedDate.toLocaleDateString()
+            }
         }
     }
 </script>

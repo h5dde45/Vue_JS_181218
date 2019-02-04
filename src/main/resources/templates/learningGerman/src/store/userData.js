@@ -6,6 +6,7 @@ let defaultUserData = {
 }
 
 export default ({
+
         state: {
             userData: defaultUserData
         },
@@ -46,7 +47,7 @@ export default ({
                     }
                 }, {merge: true})
                     .then(() => {
-                        commit('add_user_book', {bookId: payload, book:book})
+                        commit('add_user_book', {bookId: payload, book: book})
                     })
             }
         },

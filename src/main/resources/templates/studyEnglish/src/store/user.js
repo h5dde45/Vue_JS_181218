@@ -8,6 +8,7 @@ export default ({
         }
     },
     getters: {
+        userId: (state) => state.user.uid,
         isUserAuthenticated: (state) => state.user.isAuthenticated
     },
     mutations: {
@@ -20,7 +21,7 @@ export default ({
                 isAuthenticated: false,
                 uid: null
             }
-        }
+        },
     },
     actions: {
         signup({commit}, payload){
@@ -50,9 +51,10 @@ export default ({
                 });
 
         },
-        state_changed({commit}, payload){
+        state_changed({commit, dispatch}, payload){
             if (payload) {
                 commit('set_user', payload.uid)
+                dispatch('load_user_data', payload.uid)
             } else {
                 commit('unset_user')
             }
