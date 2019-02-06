@@ -49,10 +49,10 @@ export default ({
             signout(){
                 firebase.auth().signOut()
             },
-            state_change({commit}, payload){
+            state_change({commit, dispatch}, payload){
                 if (payload) {
                     commit('set_user', payload.uid)
-                    commit('load_user_data',  payload.uid)
+                    dispatch('load_user_data',  payload.uid)
                 } else {
                     commit('unset_user')
                 }

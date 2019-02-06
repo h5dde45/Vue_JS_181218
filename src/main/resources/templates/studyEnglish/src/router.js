@@ -28,7 +28,8 @@ export default new Router({
             path: '/book/:id',
             name: 'book',
             props: true,
-            component: Book
+            component: Book,
+            beforeEnter: AuthGuard
         },
         {
             path: '/book/:bookId/part/:partId',

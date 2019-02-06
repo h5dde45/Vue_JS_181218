@@ -3,8 +3,8 @@
         <v-container>
             <v-layout row class="hidden-sm-and-down">
                 <v-flex xs4 md3>
-                    <v-card-media height="150px"
-                                  :src="book.imageUrl"></v-card-media>
+                    <v-img height="150px"
+                                  :src="book.imageUrl"></v-img>
                     <div class="text-xs-center  mt-2">
                         <v-btn flat color="white">
                             <v-icon left>play_circle_outline</v-icon>
@@ -45,8 +45,8 @@
             <div class="hidden-md-and-up">
                 <v-layout row>
                     <v-flex xs4 md3>
-                        <v-card-media height="150px"
-                                      :src="book.imageUrl"></v-card-media>
+                        <v-img height="150px"
+                                      :src="book.imageUrl"></v-img>
                     </v-flex>
                     <v-flex xs8 md9>
                         <v-card-title>

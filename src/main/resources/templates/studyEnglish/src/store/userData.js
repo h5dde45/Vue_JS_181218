@@ -18,6 +18,14 @@ export default ({
         },
         add_user_book(state, payload){
             Vue.set(state.userData.books, payload.bookId, payload.book)
+        },
+        add_user_book_part(state, payload){
+            Vue.set(state.userData.books[payload.bookId].parts,
+                payload.partId, {addedDate: payload.timestamp})
+        },
+        add_user_book_part_last_open_date(state, payload){
+            Vue.set(state.userData.books[payload.bookId].parts[payload.partId],
+                'lastOpenDate', payload.timestamp)
         }
     },
     actions: {
@@ -26,13 +34,13 @@ export default ({
             let userDataRef = Vue.$db.collection('userData').doc(payload)
             userDataRef.get()
                 .then((data) => {
-                    let userData = data.exist ? data.data() : defaultUserData
+                    let userData = data.exists ? data.data() : defaultUserData
 
-                    if (userData.books) {
+                    if (!userData.books) {
                         userData.books = {}
                     }
-                    for(let key in userData.books){
-                        if(userData.books.hasOwnProperty(key)){
+                    for (let key in userData.books) {
+                        if (userData.books.hasOwnProperty(key)) {
                             userData.books[key].addedDate = userData.books[key].addedDate.toDate()
                         }
                     }
@@ -65,6 +73,23 @@ export default ({
                 .catch(() => {
                     commit('set_processing', false)
                 })
+        },
+        update_user_book_part_stats({commit, getters}, payload){
+            let userDataRef = Vue.$db.collection('userData').doc(getters.userId)
+            let timestemp = new Date()
+            if (!getters.userData.books[payload.bookId].parts[payload.partId]) {
+                userDataRef.update({
+                    [`books.${payload.bookId}.parts.${payload.partId}.addedDate`]: timestemp
+                })
+                    .then(() => commit('add_user_book_part'),
+                        {bookId: payload.bookId, partId: payload.partId, tamestemp: timestemp})
+            }
+
+                userDataRef.update({
+                    [`books.${payload.bookId}.parts.${payload.partId}.lastOpenDate`]: timestemp
+                })
+                    .then(() => commit('add_user_book_part_last_open_date'),
+                        {bookId: payload.bookId, partId: payload.partId, tamestemp: timestemp})
         }
     }
 })
