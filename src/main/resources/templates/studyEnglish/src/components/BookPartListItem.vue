@@ -6,6 +6,10 @@
             </v-card-title>
             <v-card-actions>
                 <v-spacer></v-spacer>
+                <div v-if="finishDate" class="mr-3">
+                    <v-icon dark >check</v-icon>
+                    Прочитано {{finishDate | formattedDate}}
+                </div>
                 <v-btn flat class="yellow" v-if="isUserBookLoader"
                        :to="{name:'bookPart', params:{bookId: bookId, partId:part.id}}">Открыть
                 </v-btn>
@@ -29,6 +33,15 @@
             ...mapGetters(['isUserAuthenticated', 'userData', 'getProcessing']),
             isUserBookLoader(){
                 return this.isUserAuthenticated && !this.getProcessing && !!this.userData.books[this.bookId]
+            },
+            finishDate(){
+                if (!this.isUserBookLoader) {
+                    return false
+                }
+                let book = this.userData.books[this.bookId]
+                if(book && book.parts[this.part.id]){
+                    return book.parts[this.part.id].finishedDate
+                }
             }
         },
     }

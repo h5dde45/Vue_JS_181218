@@ -27,9 +27,6 @@
                     <v-icon left v-html="item.icon"></v-icon>
                     {{item.title}}
                 </v-btn>
-                <div style="line-height: 65px" v-if="isUserAuthenticated">
-                    Id: {{userId}}
-                </div>
                 <v-btn flat @click.prevent="signout" v-if="isUserAuthenticated">
                     <v-icon left>directions_run</v-icon>
                     Выйти

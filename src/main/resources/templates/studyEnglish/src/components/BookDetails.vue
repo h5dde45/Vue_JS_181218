@@ -36,7 +36,7 @@
                         </v-btn>
                         <div v-if="getUserDataBook(book.id)">
                             <v-icon color="white" class="mr-2">account_balance</v-icon>
-                            Книга добавлена {{getBookAddedDate(book.id)}}
+                            Книга добавлена {{getBookAddedDate(book.id) | formattedDate}}
                         </div>
                     </v-card-actions>
                 </v-flex>
@@ -122,7 +122,7 @@
             },
             getBookAddedDate(bookId){
                 let book = this.getUserDataBook(bookId);
-                return book.addedDate.toLocaleDateString()
+                return book.addedDate
             }
         }
     }

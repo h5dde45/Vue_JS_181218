@@ -14,7 +14,11 @@
                             {{error}}
                         </v-alert>
                         <v-form v-model="valid">
-                            <v-text-field prepend-icon="person" name="login" label="Почта"
+                            <v-text-field prepend-icon="person" name="name" label="Имя"
+                                          type="text" required
+                                          v-model="name"
+                                          :rules="nameRules"></v-text-field>
+                            <v-text-field prepend-icon="email" name="login" label="Почта"
                                           type="email" required
                                           v-model="email"
                                           :rules="emailRules"></v-text-field>
@@ -39,18 +43,22 @@
     export default {
         data(){
             return {
+                name:'',
                 email: '',
                 password: '',
                 valid: false,
-                emailRules: [
-                    (v) => !!v || 'Укажите почту',
-                    (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v)
-                    || 'Некорректный адрес'
-                ],
-                passwordRules: [
-                    (v) => !!v || 'Введите пароль',
-                    (v) => (v && v.length >= 6) || 'Пароль - минимум 6 символов'
-                ],
+                        nameRules: [
+                    (v) => !!v || 'Введите имя',
+                    (v) => (v && v.length >= 2) || 'Имя - минимум 2 символа'
+                    ],
+                       emailRules: [ (v) => !!v || 'Укажите почту',
+                        (v) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v)
+                        || 'Некорректный адрес'
+                    ],
+                        passwordRules: [
+                        (v) => !!v || 'Введите пароль',
+                        (v) => (v && v.length >= 6) || 'Пароль - минимум 6 символов'
+                    ]
             }
         },
         computed: {
@@ -74,6 +82,7 @@
         methods: {
             signup(){
                 this.$store.dispatch('signup', {
+                    name: this.name,
                     email: this.email,
                     password: this.password
                 })

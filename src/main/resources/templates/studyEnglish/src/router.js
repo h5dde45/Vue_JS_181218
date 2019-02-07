@@ -35,7 +35,8 @@ export default new Router({
             path: '/book/:bookId/part/:partId',
             name: 'bookPart',
             props: true,
-            component: BookPart
+            component: BookPart,
+            beforeEnter: AuthGuard
         },
         {
             path: '/words',

@@ -9,6 +9,7 @@ import firebaseConfig from "./config/firebase";
 import VuetifyConfirm from "vuetify-confirm";
 import VueYouTubeEmbed from "vue-youtube-embed";
 import "firebase/firestore";
+import FormattedDate from './filters/formattedDate'
 
 Vue.use(Vuetify)
 Vue.use(VueYouTubeEmbed)
@@ -18,6 +19,8 @@ Vue.use(VuetifyConfirm, {
     buttonFalseText: 'Нет',
     width: 400,
 })
+
+Vue.filter('formattedDate',FormattedDate)
 
 const firebaseApp = firebase.initializeApp(firebaseConfig)
 const db = firebaseApp.firestore()

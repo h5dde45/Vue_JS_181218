@@ -14,15 +14,15 @@
                             {{error}}
                         </v-alert>
                         <v-form v-model="valid">
-                            <v-text-field prepend-icon="person" name="login" label="Почта"
-                                          type="email" required
-                                          v-model="email"
-                                          :rules="emailRules"></v-text-field>
-                            <v-text-field id="password" prepend-icon="lock" name="password"
-                                          label="Пароль" type="password" required
-                                          v-model="password"
-                                          :rules="passwordRules"></v-text-field>
-                        </v-form>
+                        <v-text-field prepend-icon="person" name="email" label="Почта"
+                                      type="email" required
+                                      v-model="email"
+                                      :rules="emailRules"></v-text-field>
+                        <v-text-field id="password" prepend-icon="lock" name="password"
+                                      label="Пароль" type="password" required
+                                      v-model="password"
+                                      :rules="passwordRules"></v-text-field>
+                    </v-form>
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
