@@ -46,6 +46,10 @@ export default ({
                         userData.books = {}
                     }
 
+                    if (!userData.words) {
+                        userData.books = {}
+                    }
+
                     commit('set_user_data', userData)
                     commit('set_processing', false)
                 })
